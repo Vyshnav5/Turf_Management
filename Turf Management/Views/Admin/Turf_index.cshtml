@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Turf_details>;
+
+@{
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+
+}
+<a asp-controller="Admin" asp-action="Turf_Reg">Register</a>
+<table class="table table-bordered">
+    <thead>
+        
+            <tr>
+                 <th>Location</th>
+                 <th>PH</th>
+                 <th>Open</th>
+                 <th>Close</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+           
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.T_location)</td>
+                <td>@Html.DisplayFor(modelItem => item.T_ph)</td>
+                <td>@Html.DisplayFor(modelItem => item.T_from_timing)</td>
+                <td>@Html.DisplayFor(modelItem => item.T_to_timing)</td>
+            </tr>
+           
+        }
+    </tbody>
+
+
+</table>

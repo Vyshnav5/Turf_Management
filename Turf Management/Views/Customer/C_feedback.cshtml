@@ -1,0 +1,23 @@
+﻿@model Feedback
+
+@{
+    Layout = "~/Views/Shared/Customer_Layout.cshtml";
+    var C_id = Context.Session.GetInt32("C_id");
+
+}
+
+<h1>Create</h1>
+<form method="post" class="row g-3">
+    <input type="hidden" asp-for="C_id" value="@C_id" />
+    <div class="col-md-6">
+        <label asp-for="F_feedback" class="form-label">Ph</label>
+        <input asp-for="F_feedback" class="form-control" />
+        <span asp-validation-for="F_feedback" class="text-danger"></span>
+    </div>
+  
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary" asp-controller="Customer" asp-action="C_feedback">Submit</button>
+    </div>
+</form>
+
+

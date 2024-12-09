@@ -1,0 +1,53 @@
+﻿@model B_details
+
+@{
+    Layout = "~/Views/Shared/Customer_Layout.cshtml";
+    var c_id = Context.Session.GetInt32("C_id");
+}
+
+<h2>Customer Registration</h2>
+
+<form asp-action="Cust_Reg" method="post">
+    <input type="hidden" asp-for="C_id" value="@c_id" />
+    <input type="hidden" asp-for="B_availability" value="Booked" />
+
+    <div class="form-group">
+        <label asp-for="T_id" class="control-label">Turf</label>
+        <select asp-for="T_id" class="form-control" asp-items="@(new SelectList(ViewBag.message, "T_id", "T_location"))"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="B_booking_date" class="control-label"></label>
+        <input type="date" asp-for="B_booking_date" class="form-control" />
+        <span asp-validation-for="B_booking_date" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="B_from_time" class="control-label"></label>
+        <input type="time" asp-for="B_from_time" class="form-control" />
+        <span asp-validation-for="B_from_time" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="B_To_time" class="control-label"></label>
+        <input type="time" asp-for="B_To_time" class="form-control" />
+        <span asp-validation-for="B_To_time" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="B_acc_details" class="control-label"></label>
+        <input asp-for="B_acc_details" class="form-control" />
+        <span asp-validation-for="B_acc_details" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="B_payment" class="control-label"></label>
+        <input asp-for="B_payment" class="form-control" />
+        <span asp-validation-for="B_payment" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" asp-controller="Customer" asp-action="Book" class="btn btn-primary">Book</button>
+    </div>
+</form>
+

@@ -1,0 +1,40 @@
+﻿@model PaginatedList<B_details>
+
+@{
+    Layout = "~/Views/Shared/Customer_Layout.cshtml";
+}
+
+<h1>Booking Details</h1>
+<a asp-controller="Customer" asp-action="">Book Now</a>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Location</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Date</th> 
+            <th>Avaialability</th>
+      
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.T_location)</td>
+                <td>@Html.DisplayFor(modelItem => item.B_from_time)</td>
+                <td>@Html.DisplayFor(modelItem => item.B_To_time)</td>
+                <td>@Html.DisplayFor(modelItem => item.B_booking_date)</td>
+                <td>@Html.DisplayFor(modelItem => item.B_availability)</td>
+                <td>@Html.DisplayFor(modelItem => item.C_name)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var preDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<a asp-action="AD_order_det" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-outline-primary @preDisabled">Previous</a>
+<a asp-action="AD_order_det" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-outline-primary @nextDisabled">Next</a>

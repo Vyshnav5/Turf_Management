@@ -1,0 +1,45 @@
+﻿@model Login
+
+<header>
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                        <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="L_email" class="form-control" id="Email" />
+                                    <label asp-for="L_email" id="Email">Email</label>
+                                    <span asp-validation-for="L_email" class="text-danger"></span>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input asp-for="L_password" class="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                    <label asp-for="L_password" for="inputPassword">Password</label>
+                                    <span asp-validation-for="L_password" class="text-danger"></span>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
+                                    <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                    <a class="small" href="password.html">Forgot Password?</a>
+                                    <button type="submit" asp-controller="Login" asp-action="Log" class="btn btn-primary">Login</button>
+                                </div>
+                                <div class="card-footer text-center py-3">
+                                    <div class="small">
+                                        <p>Need an account?<a asp-controller="Login" asp-action="Cust_Reg"> Sign up</a> </p>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</header>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
